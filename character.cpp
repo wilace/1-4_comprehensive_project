@@ -2,6 +2,13 @@
 
 #include <algorithm>
 
+auto battle::Character::Healing() -> void {
+    this->the_remaining_amount_of_health_point_ += kAmountOfHealing;
+
+    this->the_remaining_amount_of_health_point_ =
+        std::min(the_remaining_amount_of_health_point_, this->kMaxHealthPoint);
+}
+
 auto battle::CalculateDamage(const Character& attack_side,
                              const Character& defense_side) -> int {
     int damage = 0;

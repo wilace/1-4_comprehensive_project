@@ -15,8 +15,14 @@ class Character {
     int the_remaining_amount_of_health_point_ = -1;
     int the_remaining_amount_of_magic_point_ = -1;
 
-    bool is_defense_;
-    bool is_strong_attack_;
+    bool is_defense_ = false;
+    bool is_strong_attack_ = false;
+
+  public:
+    auto Defense() -> void {
+        this->is_defense_ = true;
+    }
+    auto Healing() -> void;
 
     friend auto CalculateDamage(const Character& attack_side,
                                 const Character& defense_side) -> int;
