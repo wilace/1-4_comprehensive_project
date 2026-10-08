@@ -29,8 +29,8 @@ class Character {
 
   public:
     Character(int max_hp, int attack_power, int defense_power, int heals_left)
-        : kMaxHp(max_hp), hp(max_hp), kAttackPower(attack_power),
-          kDefensePower(defense_power), heals_left(heals_left) {};
+        : kMaxHp(max_hp), kAttackPower(attack_power),
+          kDefensePower(defense_power), hp(max_hp), heals_left(heals_left) {};
 
     friend auto Heal(Character& character) -> void;
 

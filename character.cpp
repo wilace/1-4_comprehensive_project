@@ -1,6 +1,6 @@
 #include "character.hpp"
 
-#include <algorithm>
+// #include <algorithm>
 #include <iostream>
 
 namespace battle {
@@ -17,9 +17,14 @@ auto Guard(Character& character) -> void {
 }
 
 auto Heal(Character& character) -> void {
+    if (character.heals_left <= 0) {
+        std::cout << "MPが足りない！\n";
+        return;
+    }
+
     int healed = 0;
     if (character.hp + kHealAmount > character.kMaxHp) {
-        healed = character.hp + kHealAmount - character.kMaxHp;
+        healed = character.kMaxHp - character.hp;
         character.hp = character.kMaxHp;
     } else {
         character.hp += kHealAmount;
@@ -42,11 +47,28 @@ auto CalculateDamage(const Character& attack_side,
 
     result -= defense_side.kDefensePower;
 
+#if defined(BATTLE_DEBUG)
+    std::cout << "攻撃力 - 防御力 = " << result << "\n";
+#endif
+
     if (defense_side.is_guard) {
         result /= 2;
     }
 
-    return std::max(1, result);
+#if defined(BATTLE_DEBUG)
+    std::cout << "防御行動を考慮した最終数値\n";
+#endif
+
+    if (result < 1) {
+#if defined(BATTLE_DEBUG)
+        std::cout << "最終数値が1未満なので、1に変換\n";
+#endif
+        result = 1;
+    }
+
+    // return std::max(1, result);
+
+    return result;
 }
 
 } // namespace battle
