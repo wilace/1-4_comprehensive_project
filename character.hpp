@@ -1,6 +1,7 @@
 #if not defined(DEFINED_CHARACTER)
 
 #define DEFINED_CHARACTER
+#include <string>
 namespace battle {
 
 const int kDamageMultiplier = 1;
@@ -17,6 +18,7 @@ auto CalculateDamage(const Character& attack_side,
                      const Character& defense_side) -> int;
 
 class Character {
+    const std::string kName;
     const int kMaxHp;
     const int kAttackPower;
     const int kDefensePower;
@@ -28,11 +30,16 @@ class Character {
     bool is_strong = false;
 
   public:
-    Character(int max_hp, int attack_power, int defense_power, int heals_left)
-        : kMaxHp(max_hp), kAttackPower(attack_power),
+    Character(std::string name, int max_hp, int attack_power, int defense_power,
+              int heals_left)
+        : kName(name), kMaxHp(max_hp), kAttackPower(attack_power),
           kDefensePower(defense_power), hp(max_hp), heals_left(heals_left) {};
 
     friend auto Heal(Character& character) -> void;
+
+    auto GetName() const -> std::string {
+        return kName;
+    }
 
     auto GetIsGuard() const -> bool {
         return this->is_guard;

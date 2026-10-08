@@ -7,8 +7,16 @@ namespace battle {
 
 auto Attack(const Character& attack_side, Character& defense_side) -> void {
     int damage = CalculateDamage(attack_side, defense_side);
+    std::cout << attack_side.GetName() << "の攻撃！ " << defense_side.GetName()
+              << " に " << damage << " のダメージ\n";
 
     int hp_amount = defense_side.GetHp() - damage;
+
+    if (hp_amount < 0) {
+        defense_side.SetHp(0);
+        return;
+    }
+
     defense_side.SetHp(hp_amount);
 }
 
@@ -56,7 +64,7 @@ auto CalculateDamage(const Character& attack_side,
     }
 
 #if defined(BATTLE_DEBUG)
-    std::cout << "防御行動を考慮した最終数値\n";
+    std::cout << "防御行動を考慮した最終数値: " << result << "\n";
 #endif
 
     if (result < 1) {
