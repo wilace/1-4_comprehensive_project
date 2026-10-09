@@ -69,6 +69,10 @@ class Character {
         this->hp = hp;
     }
 
+    auto SetIsStrong(bool is_strong) -> void {
+        this->is_strong = is_strong;
+    }
+
     friend auto CalculateDamage(const Character& attack_side,
                                 const Character& defense_side) -> int;
 };

@@ -25,11 +25,6 @@ auto Guard(Character& character) -> void {
 }
 
 auto Heal(Character& character) -> void {
-    if (character.heals_left <= 0) {
-        std::cout << "MPが足りない！\n";
-        return;
-    }
-
     int healed = 0;
     if (character.hp + kHealAmount > character.kMaxHp) {
         healed = character.kMaxHp - character.hp;
