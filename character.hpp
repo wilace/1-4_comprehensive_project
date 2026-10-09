@@ -4,11 +4,17 @@
 #include <string>
 namespace battle {
 
+class Character;
+
+enum class BattleCommand {
+    kAttack = 1,
+    kDefense = 2,
+    kHeal = 3,
+};
+
 const int kDamageMultiplier = 1;
 const int kStrongDamageMultiplier = 2;
 const int kHealAmount = 30;
-
-class Character;
 
 auto Attack(const Character& attack_side, Character& defense_side) -> void;
 auto Guard(Character& character) -> void;
@@ -39,6 +45,10 @@ class Character {
 
     auto GetName() const -> std::string {
         return kName;
+    }
+
+    auto GetMaxHp() const -> int {
+        return this->kMaxHp;
     }
 
     auto GetIsGuard() const -> bool {
