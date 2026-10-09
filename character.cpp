@@ -21,6 +21,7 @@ auto Attack(const Character& attack_side, Character& defense_side) -> void {
 }
 
 auto Guard(Character& character) -> void {
+    std::cout << character.GetName() << " は防御体勢をとった！\n";
     character.SetIsGuard(true);
 }
 

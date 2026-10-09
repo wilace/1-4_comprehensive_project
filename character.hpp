@@ -69,6 +69,9 @@ class Character {
         this->hp = hp;
     }
 
+    auto GetIsStrong() const -> bool {
+        return this->is_strong;
+    }
     auto SetIsStrong(bool is_strong) -> void {
         this->is_strong = is_strong;
     }
