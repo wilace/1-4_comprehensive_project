@@ -1,3 +1,4 @@
+#include "battle.hpp"
 #include "character.hpp"
 
 auto main() -> int {
