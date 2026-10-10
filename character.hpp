@@ -1,6 +1,7 @@
 #if not defined(DEFINED_CHARACTER)
 
 #define DEFINED_CHARACTER
+#include <iostream>
 #include <string>
 namespace battle {
 
@@ -17,10 +18,6 @@ const int kStrongDamageMultiplier = 2;
 const int kHealAmount = 30;
 
 auto Battle(Character& hero, Character& enemy) -> void;
-
-auto Attack(const Character& attack_side, Character& defense_side) -> void;
-auto Guard(Character& character) -> void;
-auto Heal(Character& character) -> void;
 
 auto CalculateDamage(const Character& attack_side,
                      const Character& defense_side) -> int;
@@ -81,6 +78,13 @@ class Character {
     friend auto CalculateDamage(const Character& attack_side,
                                 const Character& defense_side) -> int;
 };
+
+auto Attack(const Character& attack_side, Character& defense_side) -> void;
+auto Heal(Character& character) -> void;
+inline auto Guard(Character& character) -> void {
+    std::cout << character.GetName() << " は防御体勢をとった！\n";
+    character.SetIsGuard(true);
+}
 
 } // namespace battle
 

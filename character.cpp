@@ -18,7 +18,7 @@ auto Battle(Character& hero, Character& enemy) -> void {
                   << enemy.GetName() << " HP " << enemy.GetHp() << "/"
                   << enemy.GetMaxHp() << "\n\n";
 
-        if (turn % 3 == 0) {
+        if (int multiple_of_three = turn % 3; 0 == multiple_of_three) {
             enemy.SetIsStrong(true);
         }
 
@@ -90,11 +90,6 @@ auto Attack(const Character& attack_side, Character& defense_side) -> void {
     }
 
     defense_side.SetHp(hp_amount);
-}
-
-auto Guard(Character& character) -> void {
-    std::cout << character.GetName() << " は防御体勢をとった！\n";
-    character.SetIsGuard(true);
 }
 
 auto Heal(Character& character) -> void {
