@@ -1,26 +1,8 @@
 #if not defined(DEFINED_CHARACTER)
 
 #define DEFINED_CHARACTER
-#include <iostream>
 #include <string>
 namespace battle {
-
-class Character;
-
-enum class BattleCommand {
-    kAttack = 1,
-    kDefense = 2,
-    kHeal = 3,
-};
-
-const int kDamageMultiplier = 1;
-const int kStrongDamageMultiplier = 2;
-const int kHealAmount = 30;
-
-auto Battle(Character& hero, Character& enemy) -> void;
-
-auto CalculateDamage(const Character& attack_side,
-                     const Character& defense_side) -> int;
 
 class Character {
     const std::string kName;
@@ -42,49 +24,24 @@ class Character {
 
     friend auto Heal(Character& character) -> void;
 
-    auto GetName() const -> std::string {
-        return kName;
-    }
+    auto GetName() const -> std::string;
 
-    auto GetMaxHp() const -> int {
-        return this->kMaxHp;
-    }
+    auto GetMaxHp() const -> int;
 
-    auto GetIsGuard() const -> bool {
-        return this->is_guard;
-    };
-    auto SetIsGuard(bool is_guard) -> void {
-        this->is_guard = is_guard;
-    }
+    auto GetIsGuard() const -> bool;
+    auto SetIsGuard(bool is_guard) -> void;
 
-    auto GetHealsLeft() const -> int {
-        return this->heals_left;
-    }
+    auto GetHealsLeft() const -> int;
 
-    auto GetHp() const -> int {
-        return this->hp;
-    }
-    auto SetHp(int hp) -> void {
-        this->hp = hp;
-    }
+    auto GetHp() const -> int;
+    auto SetHp(int hp) -> void;
 
-    auto GetIsStrong() const -> bool {
-        return this->is_strong;
-    }
-    auto SetIsStrong(bool is_strong) -> void {
-        this->is_strong = is_strong;
-    }
+    auto GetIsStrong() const -> bool;
+    auto SetIsStrong(bool is_strong) -> void;
 
     friend auto CalculateDamage(const Character& attack_side,
                                 const Character& defense_side) -> int;
 };
-
-auto Attack(const Character& attack_side, Character& defense_side) -> void;
-auto Heal(Character& character) -> void;
-inline auto Guard(Character& character) -> void {
-    std::cout << character.GetName() << " は防御体勢をとった！\n";
-    character.SetIsGuard(true);
-}
 
 } // namespace battle
 
