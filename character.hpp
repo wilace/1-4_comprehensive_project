@@ -28,19 +28,24 @@ class Character {
 
     auto GetMaxHp() const -> int;
 
-    auto GetIsGuard() const -> bool;
-    auto SetIsGuard(bool is_guard) -> void;
+    auto GetAttackPower() const -> int;
 
-    auto GetHealsLeft() const -> int;
+    auto GetDefensePower() const -> int;
 
     auto GetHp() const -> int;
     auto SetHp(int hp) -> void;
 
+    auto GetIsGuard() const -> bool;
+    auto SetIsGuard(bool is_guard) -> void;
+
     auto GetIsStrong() const -> bool;
     auto SetIsStrong(bool is_strong) -> void;
 
-    friend auto CalculateDamage(const Character& attack_side,
-                                const Character& defense_side) -> int;
+    auto GetHealsLeft() const -> int;
+    auto SetHealsLeft(int heals_left) -> void;
+
+    auto CalculateDamage(const Character& attack_side,
+                         const Character& defense_side) -> int;
 };
 
 } // namespace battle

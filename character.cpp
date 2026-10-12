@@ -10,15 +10,12 @@ auto Character::GetMaxHp() const -> int {
     return this->kMaxHp;
 }
 
-auto Character::GetIsGuard() const -> bool {
-    return this->is_guard;
-};
-auto Character::SetIsGuard(bool is_guard) -> void {
-    this->is_guard = is_guard;
+auto Character::GetAttackPower() const -> int {
+    return this->kAttackPower;
 }
 
-auto Character::GetHealsLeft() const -> int {
-    return this->heals_left;
+auto Character::GetDefensePower() const -> int {
+    return this->kDefensePower;
 }
 
 auto Character::GetHp() const -> int {
@@ -28,11 +25,25 @@ auto Character::SetHp(int hp) -> void {
     this->hp = hp;
 }
 
+auto Character::GetIsGuard() const -> bool {
+    return this->is_guard;
+};
+auto Character::SetIsGuard(bool is_guard) -> void {
+    this->is_guard = is_guard;
+}
+
 auto Character::GetIsStrong() const -> bool {
     return this->is_strong;
 }
 auto Character::SetIsStrong(bool is_strong) -> void {
     this->is_strong = is_strong;
+}
+
+auto Character::GetHealsLeft() const -> int {
+    return this->heals_left;
+}
+auto Character::SetHealsLeft(int heals_left) -> void {
+    this->heals_left = heals_left;
 }
 
 } // namespace battle
