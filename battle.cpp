@@ -112,8 +112,9 @@ auto Heal(Character& character) -> void {
     --character.heals_left;
 }
 
-auto CalculateDamage(const Character& attack_side,
-                     const Character& defense_side) -> int {
+// 最初はcalculatedamage以外のすべての関数をcharacterクラスのメンバ関数にするつもりで設計していたため、最初に作成したcalculatedamageとHeal関数がメンバ変数にアクセスしている。その後に作成したattackやguardは最初から独立した関数として設計していたため、関数の作成時にget/set関数も作成した。
+static auto CalculateDamage(const Character& attack_side,
+                            const Character& defense_side) -> int {
     int result = 0;
 
     if (attack_side.is_strong) {
@@ -145,6 +146,9 @@ auto CalculateDamage(const Character& attack_side,
 
     // return std::max(1, result);
 
+#if defined(BATTLE_DEBUG)
+    std::cout << "最終ダメージ: " << result << "\n";
+#endif
     return result;
 }
 
