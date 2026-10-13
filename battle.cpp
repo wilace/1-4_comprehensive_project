@@ -5,17 +5,18 @@
 #include <iostream>
 #include <limits>
 
+namespace battle {
+
 namespace {
 
-auto CalculateDamage(const battle::Character& attack_side,
-                     const battle::Character& defense_side) -> int {
+auto CalculateDamage(const Character& attack_side,
+                     const Character& defense_side) -> int {
     int result = 0;
 
     if (attack_side.GetIsStrong()) {
-        result +=
-            attack_side.GetAttackPower() * battle::kStrongDamageMultiplier;
+        result += attack_side.GetAttackPower() * kStrongDamageMultiplier;
     } else {
-        result += attack_side.GetAttackPower() * battle::kDamageMultiplier;
+        result += attack_side.GetAttackPower() * kDamageMultiplier;
     }
 
     result -= defense_side.GetDefensePower();
@@ -47,8 +48,7 @@ auto CalculateDamage(const battle::Character& attack_side,
     return result;
 };
 
-auto Attack(const battle::Character& attack_side,
-            battle::Character& defense_side) -> void {
+auto Attack(const Character& attack_side, Character& defense_side) -> void {
     int damage = CalculateDamage(attack_side, defense_side);
     std::cout << attack_side.GetName() << "の攻撃！ " << defense_side.GetName()
               << " に " << damage << " のダメージ\n";
@@ -63,28 +63,26 @@ auto Attack(const battle::Character& attack_side,
     defense_side.SetHp(hp_amount);
 };
 
-auto Heal(battle::Character& character) -> void {
+auto Heal(Character& character) -> void {
     int healed = 0;
-    if (character.GetHp() + battle::kHealAmount > character.GetMaxHp()) {
+    if (character.GetHp() + kHealAmount > character.GetMaxHp()) {
         healed = character.GetMaxHp() - character.GetHp();
         character.SetHp(character.GetMaxHp());
     } else {
-        character.SetHp(character.GetHp() + battle::kHealAmount);
-        healed = battle::kHealAmount;
+        character.SetHp(character.GetHp() + kHealAmount);
+        healed = kHealAmount;
     }
 
     std::cout << "HPが" << healed << "回復した！\n";
     character.SetHealsLeft(character.GetHealsLeft() - 1);
 };
 
-auto Guard(battle::Character& character) -> void {
+auto Guard(Character& character) -> void {
     std::cout << character.GetName() << " は防御体勢をとった！\n";
     character.SetIsGuard(true);
 };
 
 } // namespace
-
-namespace battle {
 
 auto Battle(Character& hero, Character& enemy) -> void {
     int turn = 1;
@@ -127,7 +125,7 @@ auto Battle(Character& hero, Character& enemy) -> void {
                     continue;
                 }
 
-                ::Heal(hero);
+                Heal(hero);
                 break;
         }
 

@@ -22,8 +22,6 @@ class Character {
         : kName(name), kMaxHp(max_hp), kAttackPower(attack_power),
           kDefensePower(defense_power), hp(max_hp), heals_left(heals_left) {};
 
-    friend auto Heal(Character& character) -> void;
-
     auto GetName() const -> std::string {
         return this->kName;
     };
