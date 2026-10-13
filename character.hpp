@@ -24,28 +24,49 @@ class Character {
 
     friend auto Heal(Character& character) -> void;
 
-    auto GetName() const -> std::string;
+    auto GetName() const -> std::string {
+        return this->kName;
+    };
 
-    auto GetMaxHp() const -> int;
+    auto GetMaxHp() const -> int {
+        return this->kMaxHp;
+    };
 
-    auto GetAttackPower() const -> int;
+    auto GetAttackPower() const -> int {
+        return this->kAttackPower;
+    };
 
-    auto GetDefensePower() const -> int;
+    auto GetDefensePower() const -> int {
+        return this->kDefensePower;
+    };
 
-    auto GetHp() const -> int;
-    auto SetHp(int hp) -> void;
+    auto GetHp() const -> int {
+        return this->hp;
+    };
+    auto SetHp(int hp) -> void {
+        this->hp = hp;
+    };
 
-    auto GetIsGuard() const -> bool;
-    auto SetIsGuard(bool is_guard) -> void;
+    auto GetIsGuard() const -> bool {
+        return this->is_guard;
+    };
+    auto SetIsGuard(bool is_guard) -> void {
+        this->is_guard = is_guard;
+    };
 
-    auto GetIsStrong() const -> bool;
-    auto SetIsStrong(bool is_strong) -> void;
+    auto GetIsStrong() const -> bool {
+        return this->is_strong;
+    };
+    auto SetIsStrong(bool is_strong) -> void {
+        this->is_strong = is_strong;
+    };
 
-    auto GetHealsLeft() const -> int;
-    auto SetHealsLeft(int heals_left) -> void;
-
-    auto CalculateDamage(const Character& attack_side,
-                         const Character& defense_side) -> int;
+    auto GetHealsLeft() const -> int {
+        return this->heals_left;
+    };
+    auto SetHealsLeft(int heals_left) -> void {
+        this->heals_left = heals_left;
+    };
 };
 
 } // namespace battle
