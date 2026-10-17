@@ -4,6 +4,10 @@
 namespace battle {
 class Character;
 
+inline auto is_dead(int hp) -> bool {
+    return hp == 0;
+}
+
 enum class BattleCommand {
     kAttack = 1,
     kDefense = 2,
