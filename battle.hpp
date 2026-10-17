@@ -4,7 +4,7 @@
 namespace battle {
 class Character;
 
-inline auto is_dead(int hp) -> bool {
+inline auto IsDead(int hp) -> bool {
     return hp == 0;
 }
 

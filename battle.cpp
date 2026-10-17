@@ -129,7 +129,7 @@ auto Battle(Character& hero, Character& enemy) -> void {
                 break;
         }
 
-        if (battle::is_dead(enemy.GetHp())) {
+        if (battle::IsDead(enemy.GetHp())) {
             std::cout << enemy.GetName() << "を倒した！！ " << turn
                       << "ターンで勝利\n";
             break;
@@ -137,7 +137,7 @@ auto Battle(Character& hero, Character& enemy) -> void {
 
         Attack(enemy, hero);
 
-        if (battle::is_dead(hero.GetHp())) {
+        if (battle::IsDead(hero.GetHp())) {
             std::cout << hero.GetName() << "は倒れた... " << turn
                       << "ターンで敗北\n";
             break;
