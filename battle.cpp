@@ -84,9 +84,16 @@ auto Guard(Character& character) -> void {
 
 } // namespace
 
-auto Battle(Character& hero, Character& enemy) -> void {
+auto Battle(Character& hero, Character& enemy, int level) -> void {
     int turn = 1;
     int selected = -1;
+    int turn_of_strong_attack = (level == 1) ? 3 : 2;
+
+    if (turn_of_strong_attack == 3) {
+        std::cout << "難易度: ノーマル\n";
+    } else if (turn_of_strong_attack == 2) {
+        std::cout << "難易度: ハード\n";
+    }
 
     while (true) {
         std::cout << "\n=== ターン " << turn << " ===\n";
@@ -96,7 +103,7 @@ auto Battle(Character& hero, Character& enemy) -> void {
                   << enemy.GetName() << " HP " << enemy.GetHp() << "/"
                   << enemy.GetMaxHp() << "\n\n";
 
-        if (int multiple_of_three = turn % 3; 0 == multiple_of_three) {
+        if (0 == turn % turn_of_strong_attack) {
             enemy.SetIsStrong(true);
         }
 
