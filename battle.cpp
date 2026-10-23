@@ -84,6 +84,12 @@ auto Guard(Character& character) -> void {
 
 } // namespace
 
+auto ClearInput() -> void {
+    std::cout << "不正な値が入力されました\n";
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
     int turn = 1;
     int selected = -1;
@@ -114,9 +120,7 @@ auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
         std::cin >> selected;
 
         if (selected != 1 && selected != 2 && selected != 3) {
-            std::cout << "コマンドを正しく入力してください\n";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            ClearInput();
             continue;
         }
 

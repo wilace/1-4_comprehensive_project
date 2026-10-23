@@ -24,6 +24,8 @@ const int kDamageMultiplier = 1;
 const int kStrongDamageMultiplier = 2;
 const int kHealAmount = 30;
 
+auto ClearInput() -> void;
+
 auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void;
 
 } // namespace battle

@@ -27,9 +27,7 @@ auto main() -> int {
         std::cout << "\n";
 
         if (input != 1 && input != 2) {
-            std::cout << "正しい値を入力してください\n";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            battle::ClearInput();
             continue;
         }
 
@@ -47,7 +45,7 @@ auto main() -> int {
                 enemy_defense_power = battle::dragon_data::kDefensePowerHard;
                 break;
 
-            default:
+            case battle::BattleLevel::kNone:
                 continue;
         }
         break;
@@ -60,3 +58,6 @@ auto main() -> int {
 
     battle::Battle(hero, dragon, level);
 }
+
+// 3の回答：
+// 4の回答：明確な理由はない。そもそも、種類を列挙体として定義するという発想が出なかった。
