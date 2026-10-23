@@ -8,17 +8,17 @@
 auto main() -> int {
     battle::BattleLevel level = battle::BattleLevel::kNone;
 
-    const std::string hero_name = "勇者";
-    const int hero_hp = 100;
-    const int hero_attack_power = 18;
-    const int hero_defense_power = 5;
-    const int hero_heals_left = 3;
+    const std::string hero_name = battle::hero_data::kName;
+    const int hero_hp = battle::hero_data::kMaxHp;
+    const int hero_attack_power = battle::hero_data::kAttackPower;
+    const int hero_defense_power = battle::hero_data::kDefensePower;
+    const int hero_heals_left = battle::hero_data::kHealsLeft;
 
-    const std::string enemy_name = "ドラゴン";
+    const std::string enemy_name = battle::dragon_data::kName;
     int enemy_hp = -1;
     int enemy_attack_power = -1;
     int enemy_defense_power = -1;
-    const int enemy_heals_left = 0;
+    const int enemy_heals_left = battle::dragon_data::kHealsLeft;
 
     while (true) {
         int input = -1;
@@ -36,15 +36,15 @@ auto main() -> int {
         level = static_cast<battle::BattleLevel>(input);
         switch (level) {
             case battle::BattleLevel::kNormal:
-                enemy_hp = 80;
-                enemy_attack_power = 16;
-                enemy_defense_power = 6;
+                enemy_hp = battle::dragon_data::kMaxHpNormal;
+                enemy_attack_power = battle::dragon_data::kAttackPowerNormal;
+                enemy_defense_power = battle::dragon_data::kDefensePowerNormal;
                 break;
 
             case battle::BattleLevel::kHard:
-                enemy_hp = 120;
-                enemy_attack_power = 20;
-                enemy_defense_power = 8;
+                enemy_hp = battle::dragon_data::kMaxHpHard;
+                enemy_attack_power = battle::dragon_data::kAttackPowerHard;
+                enemy_defense_power = battle::dragon_data::kDefensePowerHard;
                 break;
 
             default:

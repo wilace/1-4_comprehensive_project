@@ -20,12 +20,6 @@ enum class BattleCommand {
     kHeal = 3,
 };
 
-enum class TurnOfStrongAttack {
-    kNone = -1,
-    kNormal = 3,
-    kHard = 2,
-};
-
 const int kDamageMultiplier = 1;
 const int kStrongDamageMultiplier = 2;
 const int kHealAmount = 30;

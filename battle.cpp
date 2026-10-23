@@ -87,14 +87,15 @@ auto Guard(Character& character) -> void {
 auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
     int turn = 1;
     int selected = -1;
-    TurnOfStrongAttack turn_of_strong_attack = TurnOfStrongAttack::kNone;
+    dragon_data::DragonTurnOfStrongAttack turn_of_strong_attack =
+        dragon_data::DragonTurnOfStrongAttack::kNone;
 
     if (level == BattleLevel::kNormal) {
         std::cout << "難易度: ノーマル\n";
-        turn_of_strong_attack = TurnOfStrongAttack::kNormal;
+        turn_of_strong_attack = dragon_data::DragonTurnOfStrongAttack::kNormal;
     } else if (level == BattleLevel::kHard) {
         std::cout << "難易度: ハード\n";
-        turn_of_strong_attack = TurnOfStrongAttack::kHard;
+        turn_of_strong_attack = dragon_data::DragonTurnOfStrongAttack::kHard;
     }
 
     while (true) {
@@ -119,16 +120,16 @@ auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
             continue;
         }
 
-        switch (static_cast<battle::BattleCommand>(selected)) {
-            case battle::BattleCommand::kAttack:
+        switch (static_cast<BattleCommand>(selected)) {
+            case BattleCommand::kAttack:
                 Attack(hero, enemy);
                 break;
 
-            case battle::BattleCommand::kDefense:
+            case BattleCommand::kDefense:
                 Guard(hero);
                 break;
 
-            case battle::BattleCommand::kHeal:
+            case BattleCommand::kHeal:
                 if (hero.GetHealsLeft() == 0) {
                     std::cout << "MPが足りない！\n";
                     continue;
@@ -138,7 +139,7 @@ auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
                 break;
         }
 
-        if (battle::IsDead(enemy.GetHp())) {
+        if (IsDead(enemy.GetHp())) {
             std::cout << enemy.GetName() << "を倒した！！ " << turn
                       << "ターンで勝利\n";
             break;
@@ -146,7 +147,7 @@ auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
 
         Attack(enemy, hero);
 
-        if (battle::IsDead(hero.GetHp())) {
+        if (IsDead(hero.GetHp())) {
             std::cout << hero.GetName() << "は倒れた... " << turn
                       << "ターンで敗北\n";
             break;

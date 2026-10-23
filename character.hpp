@@ -67,6 +67,31 @@ class Character {
     };
 };
 
+namespace hero_data {
+const std::string kName = "勇者";
+const int kMaxHp = 100;
+const int kAttackPower = 18;
+const int kDefensePower = 5;
+const int kHealsLeft = 3;
+} // namespace hero_data
+
+namespace dragon_data {
+const std::string kName = "ドラゴン";
+const int kMaxHpNormal = 80;
+const int kMaxHpHard = 120;
+const int kAttackPowerNormal = 16;
+const int kAttackPowerHard = 20;
+const int kDefensePowerNormal = 6;
+const int kDefensePowerHard = 8;
+const int kHealsLeft = 0;
+
+enum class DragonTurnOfStrongAttack {
+    kNone = -1,
+    kNormal = 3,
+    kHard = 2,
+};
+} // namespace dragon_data
+
 } // namespace battle
 
 #endif
