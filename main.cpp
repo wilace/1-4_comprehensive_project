@@ -1,9 +1,7 @@
 #include "battle.hpp"
 #include "character.hpp"
 
-#include <ios>
 #include <iostream>
-#include <limits>
 
 auto main() -> int {
     battle::BattleLevel level = battle::BattleLevel::kNone;
@@ -59,5 +57,12 @@ auto main() -> int {
     battle::Battle(hero, dragon, level);
 }
 
-// 3の回答：
+/*
+3の回答：難易度イージーを追加する場合にすること一覧。
+・character.hppで定義されている名前空間dragon_data内に変更があるステータス定数を追加する。
+・同じ場所で定義されているDragonTurnOfStrongAttack内にkEasyを追加する。
+・main関数内での難易度選択にイージーを追加し、それ用の分岐を追加する。
+・battle.hpp内で定義されているBattleLevel列挙体にkEasyを追加する。
+・battle.cpp内で定義されているBattle関数内に、実引数levelがイージーだった場合の分岐を追加する。
+*/
 // 4の回答：明確な理由はない。そもそも、種類を列挙体として定義するという発想が出なかった。
