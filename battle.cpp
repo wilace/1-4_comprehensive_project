@@ -87,14 +87,14 @@ auto Guard(Character& character) -> void {
 auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
     int turn = 1;
     int selected = -1;
-    int turn_of_strong_attack = -1;
+    TurnOfStrongAttack turn_of_strong_attack = TurnOfStrongAttack::kNone;
 
     if (level == BattleLevel::kNormal) {
         std::cout << "難易度: ノーマル\n";
-        turn_of_strong_attack = 3;
+        turn_of_strong_attack = TurnOfStrongAttack::kNormal;
     } else if (level == BattleLevel::kHard) {
         std::cout << "難易度: ハード\n";
-        turn_of_strong_attack = 2;
+        turn_of_strong_attack = TurnOfStrongAttack::kHard;
     }
 
     while (true) {
@@ -105,7 +105,7 @@ auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
                   << enemy.GetName() << " HP " << enemy.GetHp() << "/"
                   << enemy.GetMaxHp() << "\n\n";
 
-        if (0 == turn % turn_of_strong_attack) {
+        if (0 == turn % static_cast<int>(turn_of_strong_attack)) {
             enemy.SetIsStrong(true);
         }
 
