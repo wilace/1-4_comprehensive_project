@@ -84,15 +84,17 @@ auto Guard(Character& character) -> void {
 
 } // namespace
 
-auto Battle(Character& hero, Character& enemy, int level) -> void {
+auto Battle(Character& hero, Character& enemy, BattleLevel level) -> void {
     int turn = 1;
     int selected = -1;
-    int turn_of_strong_attack = (level == 1) ? 3 : 2;
+    int turn_of_strong_attack = -1;
 
-    if (turn_of_strong_attack == 3) {
+    if (level == BattleLevel::kNormal) {
         std::cout << "難易度: ノーマル\n";
-    } else if (turn_of_strong_attack == 2) {
+        turn_of_strong_attack = 3;
+    } else if (level == BattleLevel::kHard) {
         std::cout << "難易度: ハード\n";
+        turn_of_strong_attack = 2;
     }
 
     while (true) {

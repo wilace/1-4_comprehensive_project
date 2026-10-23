@@ -6,7 +6,7 @@
 #include <limits>
 
 auto main() -> int {
-    int level = -1;
+    battle::BattleLevel level = battle::BattleLevel::kNone;
 
     const std::string hero_name = "勇者";
     const int hero_hp = 100;
@@ -33,16 +33,15 @@ auto main() -> int {
             continue;
         }
 
-        switch (input) {
-            case 1:
-                level = 1;
+        level = static_cast<battle::BattleLevel>(input);
+        switch (level) {
+            case battle::BattleLevel::kNormal:
                 enemy_hp = 80;
                 enemy_attack_power = 16;
                 enemy_defense_power = 6;
                 break;
 
-            case 2:
-                level = 2;
+            case battle::BattleLevel::kHard:
                 enemy_hp = 120;
                 enemy_attack_power = 20;
                 enemy_defense_power = 8;
